@@ -6,7 +6,8 @@ logger = logging.getLogger(__name__)
 
 try:
     import cv2
-    cv2.ocl.setUseOpenCL(False)
+    if hasattr(cv2, "ocl"):
+        cv2.ocl.setUseOpenCL(False)
 
     logger.debug("CV2 found for image processing.")
 except ImportError:
